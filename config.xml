@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="at.wifiwien.appbilder" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>APP Bilder</name>
+    <description>
+        Das ist eine Test APP
+    </description>
+    <author email="support@phonegap.com" href="http://phonegap.com">
+        WIFI JS Kurs
+    </author>
+    <content src="index.html" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
+
+    <platform name="android">
+        <icon src="www/icon.png" />
+    </platform>
+
+</widget>
