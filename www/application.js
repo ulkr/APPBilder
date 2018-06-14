@@ -25,6 +25,14 @@ document.addEventListener('deviceready', function() {
       $('#bilder').css({'background-image': 'url("img/' + bilder[aktuell] + '")'});
     }
 
+    var playAudio = function() {
+        document.getElementById("sound").play();
+    }
+    var pauseAudio = function() {
+        document.getElementById("sound").pause();
+        document.getElementById("sound").currentTime = 0;
+    }
+
     var showNext = function() {
       showImage(1);
     }
@@ -41,6 +49,8 @@ document.addEventListener('deviceready', function() {
       } else {
         downX = event.originalEvent.clientX;
       }
+
+      playAudio();
     });
 
     $(document).on('touchend', '#bilder', function(event) {
@@ -53,6 +63,8 @@ document.addEventListener('deviceready', function() {
       if(diffX > 100) { showImage(-1); }
       downX = 0;
       $('#bilder').css({left: 0, right: 0});
+
+      pauseAudio();
     });
 
     $(document).on('click', '#next', showNext);
@@ -61,5 +73,11 @@ document.addEventListener('deviceready', function() {
     $(document).ready(function() {
       console.log( 'DOM READY!' );
       showImage(0);
+
+      window.addEventListener('deviceorientation', function(event) {
+  			var diffX = event.gamma;
+  			if(diffX < -10) $('#bilder').css({left:diffX*5});
+  			if(diffX > 10) $('#bilder').css({right: -diffX*5});
+  		});
     });
 });
